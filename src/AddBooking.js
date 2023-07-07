@@ -11,9 +11,6 @@ const AddBooking = () => {
                 <div className='col-auto col-md-9 col-xl-10 '>
                     <div className='fs-2 ms-3 font-weight-bold'>Add a Booking</div>
                     <div className="card shadow rounded ms-3 p-4 mt-4">
-
-                        {/* Client Details */}
-                        {
                             <div className="row">
                                 <div className='fs-4 mb-5' >Client Details</div>
                                 <div className="col-2 mb-4">
@@ -76,7 +73,6 @@ const AddBooking = () => {
                             <button type="button" className="btn" >Cancel</button>
                         </div>
                             </div>
-                        }
 
                        
                     </div>
