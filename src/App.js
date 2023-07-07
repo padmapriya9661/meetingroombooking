@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
 import './App.css';
+import Dashboard from './Dashboard';
+import Bookings from './Bookings';
+import Rooms from './Rooms';
+import AddBooking from './AddBooking';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import AddRoom from './AddRoom';
 
-function App() {
+const App = () =>{ 
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<SignIn/>} />
+      <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/bookings' element={<Bookings/>}/>
+      <Route path='/rooms' element={<Rooms/>}/>
+      <Route path='/addbooking' element={<AddBooking/>}/>
+      <Route path='/addroom' element={<AddRoom/>}/>
+
+      <Route path="/signup" element={<SignUp />} />
+
+      </Routes>
+      </BrowserRouter>
     </div>
+      
+      
+      
   );
 }
 
