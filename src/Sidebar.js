@@ -26,6 +26,11 @@ const Sidebar = ({children}) => {
             path:'/rooms',
             name:"Rooms",
             icon:<FaUserAlt/>
+        },
+        {
+            path:'/users',
+            name:"Users",
+            icon:<FaUserAlt/>
         }
     ]
     
