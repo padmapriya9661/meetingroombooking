@@ -23,7 +23,8 @@ const AddBooking = () => {
     const [state, setState] = useState('');
     const [zip, setZip] = useState('');
     const [country, setCountry] = useState('');
-    const [addbooking, error, isLoading] = useAddbookingMutation()
+    // const [addbooking, error, isLoading] = useAddbookingMutation()
+    const [addbooking] = useAddbookingMutation()
     const [step, setStep] = useState(1);
     const [successMessage, setSuccessMessage] = useState("");
 

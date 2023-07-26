@@ -8,7 +8,7 @@ import {
 
 
 } from "react-icons/fa";
-import { NavLink } from "react-router-dom/dist";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = ({children}) => {
     const menuItem=[
@@ -36,19 +36,19 @@ const Sidebar = ({children}) => {
     
 
     return(
-        <div className="container">
-            <div className="sidebar">
-                <div className="top_section">
-                    <h1 className="logo">Logo</h1>
-                    <div className="bars">
+        <div className="sidebar-container">
+            <div className="sidebar-sidebar">
+                <div className="sidebar-top_section">
+                    <h1 className="sidebar-logo">Logo</h1>
+                    <div className="sidebar-bars">
                         <FaBars/>
                     </div>
                 </div>
                 {
                     menuItem.map((item, index)=>(
-                        <NavLink to={item.path} key={index} className="link" activeclassName="active">
-                            <div className="icon">{item.icon}</div>
-                            <div className="link_text">{item.name}</div>
+                        <NavLink to={item.path} key={index} className="sidebar-link" activeclassName="sidebar-active">
+                            <div className="sidebar-icon">{item.icon}</div>
+                            <div className="sidebar-link_text">{item.name}</div>
                         </NavLink>
                     ))
                 }

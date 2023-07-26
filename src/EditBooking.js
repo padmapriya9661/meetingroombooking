@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {usePutbookingMutation} from './API/rtkQuery'
+import {usePutbookingMutation, useRoomsQuery} from './API/rtkQuery'
 
 
 
@@ -11,6 +11,7 @@ const EditBooking = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { booking } = location.state;
+    const { data: roomData, error: Error } = useRoomsQuery();
     const [heading, setHeading] = useState(booking?.heading);
     const [date, setDate] = useState(booking?.date);
     const [capacity, setCapacity] = useState(booking?.capacity);
@@ -28,6 +29,7 @@ const EditBooking = () => {
     const [zip, setZip] = useState(booking?.users[0]?.zip);
     const [country, setCountry] = useState(booking?.users[0]?.country);
     const [putbooking, { isLoading }] = usePutbookingMutation();
+    const [findRoom, setFindRoom] = useState('');
     const [step, setStep] = useState(1);
     const [successMessage, setSuccessMessage] = useState("");
 
@@ -39,8 +41,12 @@ const EditBooking = () => {
         return () => clearTimeout(timer);
     }, [successMessage]);
 
+    const filteredRooms = roomData?.filter((response) =>
+        response.title.toLowerCase().includes(findRoom.toLowerCase())
+    )
 
-    const handlePutForm = (e) => {
+
+    const handleEditForm = (e) => {
         e.preventDefault();
         const updatedBooking= { ...booking, heading, date, capacity, total, bookfor, ppday, status,
             users:[{name, phone, email,address, company, city, state, country, zip}]};
@@ -68,7 +74,7 @@ return (
             <div className='col-auto col-md-9 col-xl-10 '>
                 <div className='fs-2 ms-3'>Edit Booking</div>
                 {successMessage && <div className="mt-3 alert alert-success">{successMessage}</div>}
-                <div className="card shadow rounded ms-3 p-4 mt-4">
+                <div className="card rounded ms-3 p-4 mt-4">
                             <div className="row ">
                                 <div className='fs-4 mb-5'>Booking Details</div>
                                 <div className="col-2 mb-4">
@@ -200,7 +206,7 @@ return (
                                 </div>
                                 <div className="col-2 "></div>
                         <div className="col-10 mt-3 d-grid gap-2 d-md-flex">
-                        <button type="button"  className="btn btn-secondary" onClick={handlePutForm}>Update</button>
+                        <button type="button"  className="btn btn-secondary" onClick={handleEditForm}>Update</button>
                         <button type="button"  className="btn btn-dark " onClick={()=>navigate("/bookings")}>Cancel</button>
                         </div>
                             </div>

@@ -17,6 +17,7 @@ const Login = () => {
         const foundUser = users.find((user) => user.email === email && user.password === password);
         if (foundUser) {
             if (foundUser.role === 'admin') {
+                console.log("hi-------------")
                 NotificationManager.success('Admin Logged in successfully');
                 navigate('/dashboard');
             } else if (foundUser.role === 'user') {
